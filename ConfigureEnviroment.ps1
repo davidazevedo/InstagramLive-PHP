@@ -2,5 +2,5 @@
 choco install git -a;
 choco install composer -a;
 choco install php -a;
-composer intall;
+composer install;
 composer require adrifkat/instagram-api react/child-process;
