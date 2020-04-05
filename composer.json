@@ -1,6 +1,6 @@
 {
     "require": {
-        "mgp25/instagram-php": "^4.0",
-        "react/child-process": "0.5.2"
+        "adrifkat/instagram-api": "^1.0",
+        "react/child-process": "^0.6.1"
     }
 }

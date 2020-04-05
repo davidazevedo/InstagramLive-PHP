@@ -5,7 +5,7 @@ if (php_sapi_name() !== "cli") {
 
 logM("Loading InstagramLive-PHP v0.3...");
 set_time_limit(0);
-date_default_timezone_set('America/New_York');
+date_default_timezone_set('UTC');
 
 //Load Depends from Composer...
 require __DIR__.'/vendor/autoload.php';
@@ -16,7 +16,6 @@ require_once 'config.php';
 /////// (Sorta) Config (Still Don't Touch It) ///////
 $debug = false;
 $truncatedDebug = false;
-/////////////////////////////////////////////////////
 
 if (IG_USERNAME == "USERNAME" || IG_PASS == "PASSWORD") {
     logM("Default Username and Passwords have not been changed! Exiting...");
@@ -27,9 +26,17 @@ if (IG_USERNAME == "USERNAME" || IG_PASS == "PASSWORD") {
 logM("Logging into Instagram...");
 $ig = new Instagram($debug, $truncatedDebug);
 try {
-    $ig->login(IG_USERNAME, IG_PASS);
+    
+    $loginResponse =  $ig->login(IG_USERNAME, IG_PASS);
+
+    if ($loginResponse !== null && $loginResponse->isTwoFactorRequired()) {
+        $twoFactorIdentifier = $loginResponse->getTwoFactorInfo()->getTwoFactorIdentifier();
+        $verificationCode = readline("Code: ");
+        $ig->finishTwoFactorLogin(IG_USERNAME, IG_PASS, $twoFactorIdentifier, $verificationCode);
+    }
+    
 } catch (\Exception $e) {
-    echo 'Error While Logging in to Instagram: '.$e->getMessage()."\n";
+    echo 'Error 1 While Logging in to Instagram: '.$e->getMessage()."\n";
     exit(0);
 }
 
@@ -56,6 +63,17 @@ try {
     $streamUrl = $split[0];
     $streamKey = $broadcastId.$split[1];
 
+    $myfile = fopen("streamKey.txt", "w") or die("Unable to open file!");
+    $txt = "================================ David Azevedo - davidazevedo30.com ================================\n";
+    fwrite($myfile, $txt);
+    $txt = "================================ Stream URL ================================\n".$streamUrl."\n================================ Stream URL ================================";
+    fwrite($myfile, $txt);
+    $txt = "======================== Current Stream Key ========================\n".$streamKey."\n======================== Current Stream Key ========================";
+    fwrite($myfile, $txt);
+    fclose($myfile);
+
+    logM("================================ David Azevedo - davidazevedo30.com ================================\n");
+    
     logM("================================ Stream URL ================================\n".$streamUrl."\n================================ Stream URL ================================");
 
     logM("======================== Current Stream Key ========================\n".$streamKey."\n======================== Current Stream Key ========================");
@@ -68,7 +86,7 @@ try {
     $ig->live->getFinalViewerList($broadcastId);
     $ig->live->end($broadcastId);
 } catch (\Exception $e) {
-    echo 'Error While Creating Livestream: '.$e->getMessage()."\n";
+    echo 'Error 2 While Creating Livestream: '.$e->getMessage()."\n";
 }
 
 /**

@@ -1,45 +1,40 @@
 # InstagramLive-PHP
-A PHP script that allows for you to go live on Instagram with any streaming program that supports RTMP!
+Um script PHP que permite que você entre no Instagram com qualquer programa de streaming compatível com RTMP!
 
-# Note
-This has been only tested on Windows, I have no clue if this works on UNIX-Based Systems. Feel free to try though!
+# Nota
+Isso foi testado apenas no Windows, não tenho idéia se isso funciona em sistemas baseados em UNIX. Sinta-se livre para tentar!
 
-Additionally, I've only tested this in OBS. So I highly recommend using it
+Além disso, eu só testei isso no OBS. Então eu recomendo usá-lo
 
-# Setup
-If you are running this after the first setup, work from step six on...
+# Configuração
+Se você estiver executando isso após a primeira instalação, trabalhe a partir da etapa seis em ...
 
-1. Install PHP, of course...
-2. [Install Composer](https://getcomposer.org/download/)
-3. Clone the Repository
-4. Run ```composer require mgp25/instagram-php react/child-process``` in the cloned folder
-5. Edit the Username and Password inside of `config.php` to your instagram details
-6. Run the `goLive.php` script. (`php -f goLive.php`)
-7. Copy you Stream-URL and Stream-Key and paste them into your streaming software. [See OBS-Setup](https://github.com/JRoy/InstagramLive-PHP#obs-setup)
+1. Instale o PHP: (https://windows.php.net/download#php-7.2)
+2. [Install Composer] (https://getcomposer.org/download/)
+3. Clone o Repositório ou Baixe o arquivo e descompate (https://github.com/davidazevedo/InstagramLive-PHP/archive/master.zip)
+4. Execute ```composer require adrifkat/instagram-api react/child-process``` na pasta clonada
+5. Edite o nome de usuário e a senha dentro de `config.php` com os detalhes do instagram
+6. Execute o script `goLive.php`. (`php -f goLive.php`)
+7. Copie seu Stream-URL e Stream-Key e cole-os no seu software de streaming. [Consulte OBS-Setup](https://github.com/davidazevedo/InstagramLive-PHP#obs-setup)
 
 # OBS-Setup
-1. Go to the "Stream" section of your OBS Settings 
-2. Set "Stream Type" to "Custom Streaming Server"
-3. Set the "URL" field to the stream url you got from the script
-4. Set the "Stream key" field to the stream key you got from the script
-5. Make Sure "Use Authentication" is **unchecked** and press "OK"
-6. Start Streaming in OBS
-7. To stop streaming, run the "stop" command in your terminal and then press "Stop Streaming" in OBS
-* Note: To emulate the exact content being sent to Instagram, set your OBS canvas size to 720x1280. This can be done by going to Settings->Video and editing Base Canvas Resolution to "720x1280".
+1. Vá para a seção "Stream" das configurações do OBS
+2. Defina "Tipo de fluxo" como "Servidor de fluxo personalizado"
+3. Defina o campo "URL" como o URL do fluxo que você obteve do script
+4. Defina o campo "Chave de fluxo" como a chave de fluxo que você obteve do script
+5. Certifique-se de que "Usar autenticação" esteja ** desmarcado ** e pressione "OK"
+6. Inicie a transmissão no OBS
+7. Para interromper o streaming, execute o comando "stop" no seu terminal e pressione "Stop Streaming" no OBS
+* Observação: para emular o conteúdo exato que está sendo enviado ao Instagram, defina o tamanho da tela do OBS para 720x1280. Isso pode ser feito em Ajustes-> Vídeo e editando a Resolução da Tela Base para "720x1280".
 
-# FAQ
-#### OBS gives a "Failed to connect" error
-This is mostly due to an invalid stream key: The stream key changes **every** time you start a new stream so it must be replaced in OBS every time.
-#### I've stopped streaming but Instagram still shows me as live
-This is due to you not running the "stop" command inside the script. You cannot just close the command window to make Instagram stop streaming, you must run the stop command in the script. If you *do* close the command window however, start it again and just run the stop command, this should stop Instagram from listing to live content.
-#### I get an error inside of Instagram when archiving my story
-This is usually due to archiving a stream that had no content (video). Just delete the archive and be go on with your day.
+# PERGUNTAS FREQUENTES
+#### OBS fornece um erro "Falha ao conectar"
+Isso ocorre principalmente devido a uma chave de fluxo inválida: a chave de fluxo muda ** toda vez que você inicia um novo fluxo, portanto, ele deve ser substituído no OBS toda vez.
+Parei de transmitir, mas o Instagram ainda me mostra ao vivo
+Isso ocorre porque você não está executando o comando "stop" dentro do script. Você não pode simplesmente fechar a janela de comando para fazer o Instagram parar de transmitir, você deve executar o comando stop no script. Se você * fecha * a janela de comando, no entanto, inicie-a novamente e execute o comando stop, isso deve impedir que o Instagram seja listado no conteúdo ao vivo.
 
-# Donate
-If you would like to donate to me because you find what I do useful and would like to support me, you can do so through this methods:
+#### Recebo um erro dentro do Instagram ao arquivar minha história
+Isso geralmente ocorre devido ao arquivamento de um fluxo que não tinha conteúdo (vídeo). Basta excluir o arquivo e continuar com o seu dia.
 
-Patreon: https://www.patreon.com/JRoy
-
-PayPal.me: https://www.paypal.me/JoshuaRoy1
-
-Bitcoin: `32J2AqJBDY1VLq6wfZcLrTYS8fCcHHVDKD`
+# Doação
+Se quiser doar, faça pelo mercado pago: http://mpago.la/1p6zyw

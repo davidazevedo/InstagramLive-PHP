@@ -1,0 +1,6 @@
+================================ David Azevedo - davidazevedo30.com ================================
+================================ Stream URL ================================
+rtmp://live-upload.instagram.com:80/rtmp/
+================================ Stream URL ======================================================== Current Stream Key ========================
+18083708131198039?s_efg=eyJxZV9ncm91cHMiOnsiaWdfbGl2ZV9lbmFibGVfcG9wX3ByaW1pbmciOnsiZW5hYmxlZCI6InRydWUifSwiaWdfbGl2ZV91c2VfZmlyZWZseV9lbmNvZGluZyI6W10sImlnX2xvd19sYXRlbmN5X3Byb2R1Y3Rpb25fdW5pdmVyc2UiOnsiZW5hYmxlZCI6InRydWUifX19&s_sw=0&s_vt=ig&a=AbzmVccNRyJT7i2Y
+======================== Current Stream Key ========================
