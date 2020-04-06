@@ -50,12 +50,10 @@ try {
     $stream = $ig->live->create();
     $broadcastId = $stream->getBroadcastId();
     $ig->live->start($broadcastId);
-    // Switch from RTMPS to RTMP upload URL, since RTMPS doesn't work well.
-    $streamUploadUrl = preg_replace(
-        '#^rtmps://([^/]+?):443/#ui',
-        'rtmp://\1:80/',
-        $stream->getUploadUrl()
-    );
+ 
+    echo $streamUploadUrl;
+    
+    $streamUploadUrl = $stream->getUploadUrl();
 
     //Grab the stream url as well as the stream key.
     $split = preg_split("[".$broadcastId."]", $streamUploadUrl);
