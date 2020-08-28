@@ -1,3 +1,5 @@
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=davidazevedo_InstagramLive-PHP&metric=alert_status)](https://sonarcloud.io/dashboard?id=davidazevedo_InstagramLive-PHP)
+
 # InstagramLive-PHP
 Um script PHP que permite que você entre no Instagram com qualquer programa de streaming compatível com RTMP!
 
